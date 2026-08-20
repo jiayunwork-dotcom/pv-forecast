@@ -23,7 +23,7 @@ func MovingAvg(data []float64, window int) []float64 {
 			result[i] = sum / float64(i+1)
 		}
 	}
-	return result
+	return fillMA(result)
 }
 
 // ExpSmooth 指数平滑。
