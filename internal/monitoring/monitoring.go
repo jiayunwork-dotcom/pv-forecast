@@ -22,15 +22,7 @@ const (
 
 // CheckPR 检查性能比是否过低。
 func CheckPR(pr, threshold float64) *Alarm {
-	if pr < threshold {
-		return &Alarm{
-			Level:   Warning,
-			Code:    "LOW_PR",
-			Message: "Performance ratio below threshold",
-			Value:   pr,
-		}
-	}
-	return nil
+	return commitPR(pr, threshold)
 }
 
 // CheckInverterOutput 检查逆变器输出异常。
