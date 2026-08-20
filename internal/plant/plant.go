@@ -4,6 +4,7 @@ package plant
 import (
 	"encoding/csv"
 	"fmt"
+	"os"
 	"strconv"
 )
 
@@ -22,12 +23,9 @@ type Reading struct {
 // It returns an error if the file is missing, unreadable, or contains a
 // malformed (non-numeric) row. The first row is treated as the header.
 func ParseReadings(path string) ([]Reading, error) {
-	f, err := commitOpen(path)
+	f, err := os.Open(path)
 	if err != nil {
 		return nil, fmt.Errorf("open readings: %w", err)
-	}
-	if f == nil {
-		return nil, nil
 	}
 	defer f.Close()
 
