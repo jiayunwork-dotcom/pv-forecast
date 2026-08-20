@@ -80,12 +80,8 @@ func ParseReadings(path string) ([]Reading, error) {
 // ByInverter groups readings by their inverter id. It is nil-safe: a nil or
 // empty input yields a non-nil empty map.
 func ByInverter(readings []Reading) map[string][]Reading {
-	m := make(map[string][]Reading)
 	if readings == nil {
-		return m
+		return map[string][]Reading{}
 	}
-	for _, rd := range readings {
-		m[rd.Inverter] = append(m[rd.Inverter], rd)
-	}
-	return m
+	return bindGroup(readings)
 }
