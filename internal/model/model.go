@@ -12,11 +12,7 @@ import "pv-forecast/internal/plant"
 // output. The result is clamped to be >= 0. Higher g -> higher DC; higher temp
 // -> lower DC.
 func DCPower(g, area, eff, temp, tcoeff float64) float64 {
-	dc := g * area * eff * (1 + tcoeff*(temp-25))
-	if dc < 0 {
-		return 0
-	}
-	return dc
+	return applyDC(g, area, eff, temp, tcoeff)
 }
 
 // ACPower converts DC power to AC power through the inverter.
