@@ -12,7 +12,7 @@ import "pv-forecast/internal/plant"
 // output. The result is clamped to be >= 0. Higher g -> higher DC; higher temp
 // -> lower DC.
 func DCPower(g, area, eff, temp, tcoeff float64) float64 {
-	dc := applyGain(g, area, eff) * applyTemp(temp, tcoeff)
+	dc := g * area * eff * (1 + tcoeff*(temp-25))
 	if dc < 0 {
 		return 0
 	}
