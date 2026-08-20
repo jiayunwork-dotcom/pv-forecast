@@ -49,7 +49,7 @@ func ParseReadings(path string) ([]Reading, error) {
 		if len(rec) != 6 {
 			return nil, fmt.Errorf("row %d: expected 6 fields, got %d", i+2, len(rec))
 		}
-		irr, err := strconv.ParseFloat(rec[1], 64)
+		irr, err := commitIrr(rec[1])
 		if err != nil {
 			return nil, fmt.Errorf("row %d: bad irradiance %q: %w", i+2, rec[1], err)
 		}
