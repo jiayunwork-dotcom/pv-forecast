@@ -75,11 +75,7 @@ func AirMass(zenithDeg float64) float64 {
 
 // ClearSkyGHI 计算晴天全局水平辐照度（Haurwitz 模型，W/m²）。
 func ClearSkyGHI(zenithDeg float64) float64 {
-	if zenithDeg >= 90 {
-		return 0
-	}
-	cosZ := math.Cos(zenithDeg * math.Pi / 180)
-	return 1098 * cosZ * math.Exp(-0.057/cosZ)
+	return applyClearSky(zenithDeg)
 }
 
 // ClearSkyDNI 估算晴天法向直射辐照度（简化模型）。
