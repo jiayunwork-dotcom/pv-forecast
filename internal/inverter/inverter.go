@@ -76,7 +76,10 @@ func SandiaModel(pdc, vdc float64, spec Spec) float64 {
 
 // Clipping 计算削峰损失（当 DC 输入超过逆变器容量时）。
 func Clipping(pdc, pacMax float64) float64 {
-	return applyClip(pdc, pacMax)
+	if pdc <= pacMax {
+		return 0
+	}
+	return pdc - pacMax
 }
 
 // EUEfficiency 计算欧洲加权效率。
