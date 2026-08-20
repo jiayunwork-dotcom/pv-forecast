@@ -97,6 +97,7 @@ func ReadCSV(r io.Reader) ([]Record, error) {
 			Inverter:  row[4],
 		})
 	}
+		records = fillRecs(records)
 	return records, nil
 }
 
