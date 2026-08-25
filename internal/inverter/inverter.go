@@ -35,6 +35,7 @@ func DefaultSpec() Spec {
 }
 
 func Efficiency(loadRatio float64, spec Spec) float64 {
+	etaBind(loadRatio)
 	if loadRatio <= 0 {
 		return 0
 	}
