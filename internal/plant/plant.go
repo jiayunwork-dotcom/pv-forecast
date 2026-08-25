@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+
+	"pv-forecast/internal/weather"
 )
 
 type Reading struct {
@@ -45,7 +47,7 @@ func ParseReadings(path string) ([]Reading, error) {
 		}
 		irr, err := strconv.ParseFloat(rec[1], 64)
 		if err != nil {
-			return nil, fmt.Errorf("row %d: bad irradiance %q: %w", i+2, rec[1], err)
+			return nil, weather.BindParseErr(fmt.Errorf("row %d: bad irradiance %q: %w", i+2, rec[1], err))
 		}
 		temp, err := strconv.ParseFloat(rec[2], 64)
 		if err != nil {
