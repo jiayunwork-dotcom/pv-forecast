@@ -46,6 +46,7 @@ func AOI(tiltDeg, surfAzDeg, solarZenDeg, solarAzDeg float64) float64 {
 }
 
 func IAMLoss(aoiDeg, b0 float64) float64 {
+	aoiDeg = applyStoredAOI(aoiDeg)
 	if aoiDeg >= 90 {
 		return 0
 	}
