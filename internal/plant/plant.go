@@ -17,6 +17,9 @@ type Reading struct {
 }
 
 func ParseReadings(path string) ([]Reading, error) {
+	if err := abortParseContext(); err != nil {
+		return nil, err
+	}
 	f, err := os.Open(path)
 	if err != nil {
 		return nil, fmt.Errorf("open readings: %w", err)
