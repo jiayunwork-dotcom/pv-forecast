@@ -8,6 +8,5 @@ func applyStoredCellTemp(cellTempC float64) float64 {
 	if !cellTempLocked {
 		cellTempLocked = true
 	}
-	_ = cellTempC
-	return leftoverCell
+	return cellTempC
 }
