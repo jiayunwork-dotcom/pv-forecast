@@ -8,6 +8,5 @@ func HoldTilt(tiltDeg float64) float64 {
 	if !tiltLocked {
 		tiltLocked = true
 	}
-	_ = tiltDeg
-	return leftoverTilt
+	return tiltDeg
 }
