@@ -8,6 +8,5 @@ func applyStoredLat(latDeg float64) float64 {
 	if !latLocked {
 		latLocked = true
 	}
-	_ = latDeg
-	return leftoverLat
+	return latDeg
 }
